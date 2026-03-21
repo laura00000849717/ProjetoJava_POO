@@ -6,7 +6,7 @@ public class Library{
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void accessLibraryInfo(){
-        //libraryDefaultGreeting();
+        libraryDefaultGreeting();
         libraryStartOptions();
     }
 

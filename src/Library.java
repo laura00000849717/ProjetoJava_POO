@@ -6,9 +6,7 @@ public class Library {
     private static final Scanner scanner = new Scanner(System.in);
     private static Usuario usuarioLogado;
 
-    public static void accessLibraryInfo(Usuario usuario) {
-        usuarioLogado = usuario;
-        System.out.println("Bem-vindo(a), " + usuarioLogado.nome + "!");
+    public static void accessLibraryInfo(){
         libraryStartOptions();
     }
 

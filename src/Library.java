@@ -6,7 +6,11 @@ public class Library {
     private static final Scanner scanner = new Scanner(System.in);
     private static Usuario usuarioLogado;
 
-    public static void accessLibraryInfo(){
+   
+    private static List<Book> availableBooks = LibraryDatabase.initializeDatabase();
+
+    public static void accessLibraryInfo(Usuario usuario) {
+        usuarioLogado = usuario; 
         libraryStartOptions();
     }
 
@@ -29,79 +33,67 @@ public class Library {
         }
 
         switch (option) {
+
             case 1:
-                libraryMainPage();
-                break;
-            case 2:
-                exibirMeusLivros();
-                break;
+                 libraryMainPage(); break;
+            case 2: 
+                 exibirMeusLivros(); break;
             case 3:
-                System.out.println("Deadlines feature coming soon...");
-                break;
+                 System.out.println("Deadlines feature coming soon..."); break;
         }
     }
 
     private static void exibirMeusLivros() {
         System.out.println("\n==== YOUR BORROWED BOOKS ====");
-        List<Book> livros = usuarioLogado.getMeusLivros();
+        List<Book> livrosDoUsuario = usuarioLogado.getMeusLivros();
 
-        if (livros.isEmpty()) {
+        if (livrosDoUsuario.isEmpty()) {
             System.out.println("You don't have any books yet.");
+            System.out.println("=============================");
         } else {
-            for (int i = 0; i < livros.size(); i++) {
-                // Supondo que Book tenha um método toString ou campos acessíveis
-                System.out.println((i + 1) + ". " + livros.get(i).toString());
+            for (int i = 0; i < livrosDoUsuario.size(); i++) {
+                System.out.println("(" + i + ") " + livrosDoUsuario.get(i).getNome());
+            }
+            System.out.println("(" + livrosDoUsuario.size() + ") Back to menu");
+
+            System.out.print("\nSelect a book number to RETURN: ");
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                scanner.nextLine(); 
+
+                if (choice >= 0 && choice < livrosDoUsuario.size()) {
+                    Book livroDevolvido = livrosDoUsuario.remove(choice);
+                    availableBooks.add(livroDevolvido);
+                    System.out.println("\nSuccess! You returned: '" + livroDevolvido.getNome() + "'");
+                }
+            } else {
+                scanner.next();
             }
         }
-        
-        System.out.println("=============================");
-        // Retorna ao menu após visualizar
         libraryStartOptions();
     }
 
-private static void libraryMainPage() {
-    System.out.println("\n-- Home Page (Available Books) --");
-    List<Book> availableBooks = fetchBookDatabase();
-
-    // Listando com números para o usuário escolher
-    for (int i = 0; i < availableBooks.size(); i++) {
-        // Usando getNome() e getAutor() para uma exibição mais bonita
-        Book b = availableBooks.get(i);
-        System.out.println("(" + i + ") " + b.getNome() + " - " + b.getAutor());
-    }
-    System.out.println("(" + availableBooks.size() + ") Back to menu");
-
-    System.out.print("\nSelect a book number to borrow: ");
-    
-    if (scanner.hasNextInt()) {
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // IMPORTANTE: Limpa o buffer do teclado (o "Enter")
-
-        if (choice >= 0 && choice < availableBooks.size()) {
-            Book livroEscolhido = availableBooks.get(choice);
-            
-            // Adicionando à lista do usuário logado
-            usuarioLogado.getMeusLivros().add(livroEscolhido);
-            
-            System.out.println("\nSuccess! '" + livroEscolhido.getNome() + "' added to your books.");
-        } else if (choice == availableBooks.size()) {
-            System.out.println("Returning...");
-        } else {
-            System.out.println("Invalid selection.");
+    private static void libraryMainPage() {
+        System.out.println("\n-- Home Page (Available Books) --");
+        for (int i = 0; i < availableBooks.size(); i++) {
+            Book b = availableBooks.get(i);
+            System.out.println("(" + i + ") " + b.getNome() + " - " + b.getAutor());
         }
-    } else {
-        System.out.println("Please enter a valid number.");
-        scanner.next(); 
+        System.out.println("(" + availableBooks.size() + ") Back to menu");
+
+        System.out.print("\nSelect a book number to borrow: ");
+        if (scanner.hasNextInt()) {
+            int choice = scanner.nextInt();
+            scanner.nextLine(); 
+
+            if (choice >= 0 && choice < availableBooks.size()) {
+                Book livroEscolhido = availableBooks.remove(choice); 
+                usuarioLogado.getMeusLivros().add(livroEscolhido);
+                System.out.println("\nSuccess! '" + livroEscolhido.getNome() + "' added to your books.");
+            }
+        } else {
+            scanner.next();
+        }
+        libraryStartOptions();
     }
-    
-   
-    libraryStartOptions();
-}
-
-private static List<Book> fetchBookDatabase() {
-    List<Book> availableBooks = new ArrayList<>();
-    availableBooks.add(Book.CreateBookInstance("The Odyssey", "Homer", 101));
-    return availableBooks;
-}
-
 }

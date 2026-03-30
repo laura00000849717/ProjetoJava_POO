@@ -1,18 +1,34 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# 📚 Sistema de Gerenciamento de Biblioteca (Java POO)
 
-## Folder Structure
+Este é um projeto desenvolvido em Java que simula o funcionamento de uma biblioteca, focando na aplicação de conceitos fundamentais de **Programação Orientada a Objetos (POO)**.
 
-The workspace contains two folders by default, where:
+## 🚀 Funcionalidades
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- **Cadastro de Usuário:** Criação de perfil com nome, idade e matrícula.
+- **Banco de Dados de Livros:** Inicialização automática de uma lista de obras clássicas.
+- **Empréstimo de Livros:** O usuário pode escolher livros disponíveis, que são movidos para sua lista pessoal.
+- **Devolução de Livros:** Possibilidade de devolver livros da lista pessoal para o acervo da biblioteca.
+- **Persistência em Memória:** As listas são atualizadas em tempo real enquanto o programa está em execução.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 🛠️ Conceitos de POO Aplicados
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- **Encapsulamento:** Proteção de dados sensíveis nas classes `Book` e `Usuario`.
+- **Abstração:** Representação de entidades do mundo real em classes Java.
+- **Composição:** A classe `Usuario` possui uma lista (`ArrayList`) de objetos do tipo `Book`.
+- **Static Members:** Uso de membros estáticos para gerenciar o estado da biblioteca e do scanner global.
 
-## Dependency Management
+## 📁 Estrutura do Projeto
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- `Main.java`: Ponto de entrada do sistema e controle de login.
+- `Library.java`: Classe principal com a lógica de menus, empréstimos e devoluções.
+- `LibraryDatabase.java`: Repositório responsável por popular o acervo inicial.
+- `Usuario.java`: Representação do cliente da biblioteca.
+- `Book.java`: Modelo de dados para os livros.
+
+## 🔧 Como rodar o projeto
+
+1. Certifique-se de ter o **JDK 11 ou superior** instalado.
+2. Clone o repositório:
+   ```bash
+   git clone [https://github.com/laura00000849717/ProjetoJava_POO.git](https://github.com/laura00000849717/ProjetoJava_POO.git)

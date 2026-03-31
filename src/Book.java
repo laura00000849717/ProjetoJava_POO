@@ -14,4 +14,12 @@ public class Book{
     public static Book CreateBookInstance(String bookTitle, String bookAuthor, int bookSerialNumber){        
         return new Book(bookTitle, bookAuthor, bookSerialNumber, false);
     }
+
+    public String getNome(){
+        return title;
+    }
+
+    public String getAutor(){
+        return author;
+    }
 }

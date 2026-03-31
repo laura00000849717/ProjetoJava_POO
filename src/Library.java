@@ -6,11 +6,11 @@ public class Library {
     private static Usuario usuarioLogado;
     private static List<Book> availableBooks = LibraryDatabase.initializeDatabase();
 
-    public static void accessLibraryInfo(Usuario usuario) {
-        usuarioLogado = usuario;
+    public static void accessLibraryInfo() {
         boolean keepRunning = true;
 
-        
+        usuarioLogado = Usuario.createUsuarioInstance();
+
         while (keepRunning) {
             keepRunning = libraryStartOptions();
         }

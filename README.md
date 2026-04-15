@@ -26,6 +26,15 @@ Este é um projeto desenvolvido em Java que simula o funcionamento de uma biblio
 - `Usuario.java`: Representação do cliente da biblioteca.
 - `Book.java`: Modelo de dados para os livros.
 
+## 📄 UML
+
+<img width="871" height="508" alt="Library" src="https://github.com/user-attachments/assets/4590c51c-87f4-41c4-b763-98c30901b59e" />
+
+
+
+
+
+
 ## 🔧 Como rodar o projeto
 
 1. Certifique-se de ter o **JDK 11 ou superior** instalado.

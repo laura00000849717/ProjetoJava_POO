@@ -1,25 +1,27 @@
 public class Book{
     String title;
     String author;
-    int serialNumber;
     boolean isBorrowed;
 
-    private Book(String title, String author, int serialNumber, boolean isBorrowed){
+    private Book(String title, String author, boolean isBorrowed){
         this.title = title;
         this.author = author;
-        this.serialNumber = serialNumber;
         this.isBorrowed = isBorrowed;
     }
 
-    public static Book CreateBookInstance(String bookTitle, String bookAuthor, int bookSerialNumber){        
-        return new Book(bookTitle, bookAuthor, bookSerialNumber, false);
+    public static Book CreateBookInstance(String bookTitle, String bookAuthor, boolean isBorrowed){        
+        return new Book(bookTitle, bookAuthor, isBorrowed);
     }
 
-    public String getNome(){
+    public String getTitulo(){
         return title;
     }
 
     public String getAutor(){
         return author;
+    }
+
+    public boolean getBorrowedStatus(){
+        return isBorrowed;
     }
 }

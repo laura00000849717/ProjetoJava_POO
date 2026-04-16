@@ -9,21 +9,22 @@ public class Library {
     public static void accessLibraryInfo() {
         boolean keepRunning = true;
 
-        usuarioLogado = Usuario.createUsuarioInstance();
-
-        while (keepRunning) {
-            keepRunning = libraryStartOptions();
+        usuarioLogado = Usuario.iniciarSessao();
+        if (usuarioLogado != null){
+            while (keepRunning) {
+                keepRunning = libraryStartOptions();
+            }
         }
     }
 
     private static boolean libraryStartOptions() {
         System.out.println("\n--- MENU ---");
    
-        System.out.println("User: " + usuarioLogado.getNome() + " | ID: " + usuarioLogado.getMatricula());
-        System.out.println("(1) Access Library  (2) My Books  (3) My Deadlines  (0) Logout");
+        System.out.println("Usuario: " + usuarioLogado.getNome() + " | RA: " + usuarioLogado.getMatricula());
+        System.out.println("(1) Acessar Biblioteca  (2) Meus Livros  (3) Meus prazos  (0) Logout");
 
         if (!scanner.hasNextInt()) {
-            System.out.println("Invalid input.");
+            System.out.println("Seleção inválida. Tente novamente.");
             scanner.next();
             return true;
         }
@@ -34,34 +35,34 @@ public class Library {
         switch (option) {
             case 1 -> libraryMainPage();
             case 2 -> displayUserBooks();
-            case 3 -> System.out.println("Deadlines feature coming soon...");
+            case 3 -> System.out.println("A opção de prazos está sendo implementada...");
             case 0 -> { return false; } 
-            default -> System.out.println("Please enter a valid option.");
+            default -> System.out.println("Seleção inválida. Tente novamente.");
         }
         return true;
     }
 
     private static void displayUserBooks() {
-        System.out.println("\n==== YOUR BORROWED BOOKS ====");
+        System.out.println("\n==== SEUS LIVROS EMPRESTADOS ====");
         List<Book> userBooks = usuarioLogado.getMeusLivros();
 
         if (userBooks.isEmpty()) {
-            System.out.println("You don't have any books yet.");
+            System.out.println("Você ainda não tem nenhum livro.");
             return;
         }
 
         for (int i = 0; i < userBooks.size(); i++) {
-            System.out.println("(" + i + ") " + userBooks.get(i).getNome());
+            System.out.println("(" + i + ") " + userBooks.get(i).getTitulo());
         }
-        System.out.println("(" + userBooks.size() + ") Back to menu");
+        System.out.println("(" + userBooks.size() + ") Voltar ao menu");
 
-        System.out.print("\nSelect a book number to RETURN: ");
+        System.out.print("\n Selecione o número do livro que deseja RETORNAR: ");
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             if (choice >= 0 && choice < userBooks.size()) {
                 Book returnedBook = userBooks.remove(choice);
                 availableBooks.add(returnedBook);
-                System.out.println("\nSuccess! You returned: '" + returnedBook.getNome() + "'");
+                System.out.println("\nSucesso. Você retornou: '" + returnedBook.getTitulo() + "'");
             }
         } else {
             scanner.next();
@@ -69,20 +70,21 @@ public class Library {
     }
 
     private static void libraryMainPage() {
-        System.out.println("\n-- Available Books --");
+        System.out.println("\n-- Livros disponíveis --");
         for (int i = 0; i < availableBooks.size(); i++) {
             Book b = availableBooks.get(i);
-            System.out.println("(" + i + ") " + b.getNome() + " - " + b.getAutor());
+            System.out.println("(" + i + ") " + b.getTitulo() + " - " + b.getAutor());
         }
-        System.out.println("(" + availableBooks.size() + ") Back to menu");
+        System.out.println("(" + availableBooks.size() + ") Voltar ao menu");
 
-        System.out.print("\nSelect a book number to borrow: ");
+        System.out.print("\n Selecione um livro para emprestar: ");
+        
         if (scanner.hasNextInt()) {
             int choice = scanner.nextInt();
             if (choice >= 0 && choice < availableBooks.size()) {
                 Book chosenBook = availableBooks.remove(choice);
                 usuarioLogado.getMeusLivros().add(chosenBook);
-                System.out.println("\nSuccess! '" + chosenBook.getNome() + "' added to your books.");
+                System.out.println("\nSucesso. '" + chosenBook.getTitulo() + "' foi adicionado aos seus livros.");
             }
         } else {
             scanner.next();

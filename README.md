@@ -1,11 +1,10 @@
-
-# 📚 Sistema de Gerenciamento de Biblioteca (Java POO)
+## Sistema de Gerenciamento de Biblioteca (Java POO)
 
 Este é um projeto desenvolvido em Java que simula o funcionamento de uma biblioteca, focando na aplicação de conceitos fundamentais de **Programação Orientada a Objetos (POO)**.
 
 ## 🚀 Funcionalidades
 
-- **Cadastro de Usuário:** Criação de perfil com nome, idade e matrícula.
+- **Cadastro de Usuário:** Criação de perfil com nome e matrícula.
 - **Banco de Dados de Livros:** Inicialização automática de uma lista de obras clássicas.
 - **Empréstimo de Livros:** O usuário pode escolher livros disponíveis, que são movidos para sua lista pessoal.
 - **Devolução de Livros:** Possibilidade de devolver livros da lista pessoal para o acervo da biblioteca.
@@ -20,19 +19,15 @@ Este é um projeto desenvolvido em Java que simula o funcionamento de uma biblio
 
 ## 📁 Estrutura do Projeto
 
-- `Main.java`: Ponto de entrada do sistema e controle de login.
+- `Main.java`: Ponto de entrada do sistema.
 - `Library.java`: Classe principal com a lógica de menus, empréstimos e devoluções.
-- `LibraryDatabase.java`: Repositório responsável por popular o acervo inicial.
+- `LibraryDatabase.java`: Repositório responsável por popular o acervo de livros.
 - `Usuario.java`: Representação do cliente da biblioteca.
 - `Book.java`: Modelo de dados para os livros.
 
 ## 📄 UML
 
-<img width="871" height="508" alt="Library" src="https://github.com/user-attachments/assets/4590c51c-87f4-41c4-b763-98c30901b59e" />
-
-
-
-
+<img width="871" height="508" alt="image" src="https://github.com/user-attachments/assets/4a453e17-5bc6-43f3-a444-c5a4e9267f4c" />
 
 
 ## 🔧 Como rodar o projeto

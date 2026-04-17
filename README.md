@@ -32,7 +32,7 @@ Este é um projeto desenvolvido em Java que simula o funcionamento de uma biblio
 
 ## 📄 UML
 
-<img width="991" height="900" alt="DiagramaUML_Biblioteca3" src="https://github.com/user-attachments/assets/696de947-95db-46b5-a9b1-4257cd119484" />
+<img width="1091" height="1078" alt="DiagramaUML_Biblioteca3" src="https://github.com/user-attachments/assets/696de947-95db-46b5-a9b1-4257cd119484" />
 
 
 ## 🔧 Como rodar o projeto

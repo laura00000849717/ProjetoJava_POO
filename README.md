@@ -22,13 +22,13 @@ Este é um projeto desenvolvido em Java que simula o funcionamento de uma biblio
 - `Main.java`: Ponto de entrada do sistema.
 - `Library.java`: Classe principal com a lógica de menus, empréstimos e devoluções.
 - `LibraryDatabase.java`: Repositório responsável por popular o acervo de livros.
-- `Usuario.java`: Representação do cliente da biblioteca.
+- `Usuario.java`: Representação geral do cliente da biblioteca.
+- `Aluno.java`: Classe de usuário (aluno) com cadastro, login e salvamento.
 - `Book.java`: Modelo de dados para os livros.
 
 ## 📄 UML
 
-<img width="871" height="508" alt="image" src="https://github.com/user-attachments/assets/4a453e17-5bc6-43f3-a444-c5a4e9267f4c" />
-
+<img width="800" height="632" alt="image" src="https://github.com/user-attachments/assets/b280b910-ee8b-491d-b70f-95e22f5ed20a" />
 
 ## 🔧 Como rodar o projeto
 

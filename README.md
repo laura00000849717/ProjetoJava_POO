@@ -13,22 +13,26 @@ Este é um projeto desenvolvido em Java que simula o funcionamento de uma biblio
 ## 🛠️ Conceitos de POO Aplicados
 
 - **Encapsulamento:** Proteção de dados sensíveis nas classes `Book` e `Usuario`.
+- **Herança:** Uso de herança para tipos de usuário e tipo de empréstimo.
+- **Polimorismo:** Polimorfismo aplicado para classes de empréstimo como comportamentos distintos.
 - **Abstração:** Representação de entidades do mundo real em classes Java.
-- **Composição:** A classe `Usuario` possui uma lista (`ArrayList`) de objetos do tipo `Book`.
+- **Composição:** A classe `Aluno` possui uma lista (`ArrayList`) de objetos do tipo `Book`.
 - **Static Members:** Uso de membros estáticos para gerenciar o estado da biblioteca e do scanner global.
 
 ## 📁 Estrutura do Projeto
 
 - `Main.java`: Ponto de entrada do sistema.
 - `Library.java`: Classe principal com a lógica de menus, empréstimos e devoluções.
+- `LibraryUI.java`: Responsável pela visualização da interface e I/O da biblioteca.
 - `LibraryDatabase.java`: Repositório responsável por popular o acervo de livros.
 - `Usuario.java`: Representação geral do cliente da biblioteca.
 - `Aluno.java`: Classe de usuário (aluno) com cadastro, login e salvamento.
 - `Book.java`: Modelo de dados para os livros.
+- `Emprestimo.java`, `EmprestimoPadrao.java`, `EmprestimoEstendido.java`: Versão inicial das classes que servirão de base para o sistema de prazos.
 
 ## 📄 UML
 
-<img width="800" height="632" alt="image" src="https://github.com/user-attachments/assets/b280b910-ee8b-491d-b70f-95e22f5ed20a" />
+<img width="950" height="632" alt="image" src="https://github.com/user-attachments/assets/ad507748-c9db-493b-942b-4e73d19624b5" />
 
 ## 🔧 Como rodar o projeto
 

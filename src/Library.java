@@ -3,13 +3,13 @@ import java.util.Scanner;
 
 public class Library {
     private static final Scanner scanner = new Scanner(System.in);
-    private static Usuario usuarioLogado;
+    private static Aluno usuarioLogado;
     private static List<Book> availableBooks = LibraryDatabase.initializeDatabase();
 
     public static void accessLibraryInfo() {
         boolean keepRunning = true;
 
-        usuarioLogado = Usuario.iniciarSessao();
+        usuarioLogado = Aluno.iniciarSessao();
         if (usuarioLogado != null){
             while (keepRunning) {
                 keepRunning = libraryStartOptions();

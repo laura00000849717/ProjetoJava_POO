@@ -1,7 +1,7 @@
 public class Book{
-    String title;
-    String author;
-    boolean isBorrowed;
+    private String title;
+    private String author;
+    private boolean isBorrowed;
 
     private Book(String title, String author, boolean isBorrowed){
         this.title = title;

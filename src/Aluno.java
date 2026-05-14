@@ -1,10 +1,10 @@
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.io.File;
 
 public class Aluno extends Usuario {
     private String matricula;
@@ -57,6 +57,10 @@ public class Aluno extends Usuario {
 
         System.out.print("Insira seu número de matrícula: ");
         String matricula = scanner.nextLine();
+
+        if (nome.trim().isEmpty() || matricula.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nome e Matrícula não podem ficar em branco!");
+        }
 
         Aluno usuario = new Aluno(nome, matricula);
         usuario.salvarUsuario();

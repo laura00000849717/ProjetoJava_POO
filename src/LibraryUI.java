@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,14 +26,16 @@ public class LibraryUI {
         System.out.println("Usuario: " + library.getUsuarioLogado().getNome());
         System.out.println("(1) Biblioteca (2) Meus Livros (0) Logout");
 
-        if (!scanner.hasNextInt()) {
+        int option;
+
+        try {
+            option = scanner.nextInt();
+            scanner.nextLine();
+        } catch (InputMismatchException e) {
             System.out.println("Entrada inválida.");
-            scanner.next();
+            scanner.nextLine();
             return true;
         }
-
-        int option = scanner.nextInt();
-        scanner.nextLine();
 
         switch (option) {
             case 1 -> showBooks();
@@ -56,17 +59,26 @@ public class LibraryUI {
         System.out.println("(" + books.size() + ") Voltar");
         System.out.print("Escolha um livro: ");
 
-        if (!scanner.hasNextInt()) {
-            scanner.next();
+        int choice;
+
+        try {
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida.");
+            scanner.nextLine();
             return;
         }
 
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        if (choice == books.size()){
+            return;
+        }
 
-        if (choice >= 0 && choice < books.size()) {
+        try {
             Book book = library.borrowBook(choice);
             System.out.println("Você pegou: " + book.getTitulo());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 
@@ -83,19 +95,29 @@ public class LibraryUI {
             System.out.println("(" + i + ") " + userBooks.get(i).getTitulo());
         }
 
+        System.out.println("(" + userBooks.size() + ") Voltar");
         System.out.print("Escolha livro para devolver: ");
 
-        if (!scanner.hasNextInt()) {
-            scanner.next();
+        int choice;
+
+        try {
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida.");
+            scanner.nextLine();
             return;
         }
 
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        if (choice == userBooks.size()){
+            return;
+        }
 
-        if (choice >= 0 && choice < userBooks.size()) {
+        try {
             Book book = library.returnBook(choice);
             System.out.println("Você devolveu: " + book.getTitulo());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 }

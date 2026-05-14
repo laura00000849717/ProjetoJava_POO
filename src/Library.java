@@ -22,7 +22,7 @@ public class Library {
 
     public Book borrowBook(int index) {
         if (index < 0 || index >= availableBooks.size()) {
-            return null;
+            throw new IndexOutOfBoundsException("Não existe nenhum livro com este índice.");
         }
         Book book = availableBooks.remove(index);
         usuarioLogado.getMeusLivros().add(book);
@@ -33,7 +33,7 @@ public class Library {
         List<Book> userBooks = usuarioLogado.getMeusLivros();
 
         if (index < 0 || index >= userBooks.size()) {
-            return null;
+            throw new IndexOutOfBoundsException("Você não possui um livro com este índice.");
         }
         Book book = userBooks.remove(index);
         availableBooks.add(book);
